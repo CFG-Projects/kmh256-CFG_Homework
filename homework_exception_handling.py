@@ -46,7 +46,7 @@ if isinstance(withdrawal_amount, float):
     account_balance = account_balance - withdrawal_amount
     print(f'Your remaining balance is £{account_balance}')
   else:
-    print((f'You cannot withdraw more money than you have in your account: £{account_balance}'))
+    print(f'You cannot withdraw more money than you have in your account: £{account_balance}')
     raise ValueError("Insufficient funds")
 else:
   raise ValueError("Please enter a numerical amount")
