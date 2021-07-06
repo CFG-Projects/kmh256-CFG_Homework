@@ -18,7 +18,7 @@
 account_balance = 100
 
 pin_code = input("Please set your 4-digit PIN: ")
-while len(pin_code) < 4 or len(pin_code) > 4 or pin_code.isnumeric() == False:
+while len(pin_code) < 4 or len(pin_code) > 4 or not pin_code.isnumeric():
   print('Invalid PIN')
   pin_code = input("Please set your 4-digit PIN: ")
 
