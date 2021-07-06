@@ -1,0 +1,73 @@
+Homework: Lesson 7 – Git & GitHub
+
+Question 1
+Complete definitions for key Git & GitHub terminology
+
+GIT WORKFLOW FUNDAMENTALS
+• Working Directory - The working area is where files that are not handled by git.
+These files are also referred to as "untracked files."
+
+• Staging Area - Staging area is files that are going to be a part of the next commit,
+which lets git know what changes in the file are going to occur for the next commit.
+
+• Local Repo (head) - The HEAD in Git is the pointer to the current branch reference,
+which is in turn a pointer to the last commit you made or the last commit that was checked out into your
+working directory. That also means it will be the parent of the next commit you do.
+The HEAD pointer can be moved to different branches, tags, or commits when using git checkout.
+
+• Remote repo (master) - In Git, "master" is a naming convention for a branch.
+After cloning (downloading) a project from a remote server, the resulting local repository has a single local branch:
+the so-called "master" branch. This means that "master" can be seen as a repository's "default" branch.
+
+WORKING DIRECTORY STATES:
+• Staged - A file in the staging state means either it is not present in the last commit (e.g. newly created files)
+or it is “modified” file that user tells git to include in the next commit.
+Files are added to the staging state using git add command.
+Two types of files can be added to a staging state: untracked or modified.
+
+• Modified - A file in the modified state means that changes have been made to it that haven’t committed yet.
+The changes could be adding, modifying, or deleting the contents of the file.
+These files will be included in the next commit but will be included in their respective new form.
+
+• Committed - A file in the committed state means that the changes made to it are safely stored in a snapshot
+in the Git directory. A file is committed using git commit command.
+This command creates a new snapshot in the Git directory and shows us some stats for the change made.
+
+GIT COMMANDS:
+• Git add - adds your modified files to the queue to be committed later. Files are not committed.
+It adds changes in the working directory to the staging area for objects prepared to be committed.
+
+• Git commit - commits the files that have been added and creates a new revision with a log.
+If you do not add any files, git will not commit anything. You can combine both actions with git commit -a
+
+• Git push - The git push command is used to upload local repository content to a remote repository.
+Pushing is how you transfer commits from your local repository to a remote repo.
+It's the counterpart to git fetch , but whereas fetching imports commits to local branches,
+pushing exports commits to remote branches.
+
+• Git fetch - tells your local git to retrieve the latest meta-data info from the original
+(yet doesn’t do any file transferring. It’s more like just checking to see if there are any
+changes available). You can use git fetch to know the changes done in the remote repo/branch since your last pull.
+This is useful to allow for checking before doing an actual pull, which could change files in your current branch
+and working copy (and potentially lose your changes, etc).
+
+• Git merge - Merging is Git's way of putting a forked history back together again.
+The git merge command lets you take the independent lines of development created by git branch
+and integrate them into a single branch.
+
+• Git pull - git pull is a Git command used to update the local version of a repository from a remote.
+The git pull command is actually a combination of two other commands, git fetch followed by git merge.
+
+Question 2
+Note that from now on we will be actively using Git & GitHub to share materials and manage our
+code, as well as homework.
+
+TASK
+• In your GitHub create a new repo called Homework.
+• Add your instructor as a collaborator to this repo, so they can access your homework
+submissions in the future and comment on your code.
+• Clone this repo to your machine
+• Create a new file called my_first_git_homework_<your_name>.txt
+• Commit and push it to the remote repo
+• Ensure that the new file can be seen in your GitHub when you access it from a browser like
+Chrome
