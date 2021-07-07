@@ -40,9 +40,13 @@ while attempts > 0:
 try:
   if user_input != pin_code:
     raise Exception
-  withdrawal_amount = float(input("Please enter the amount you would like to withdraw: "))
 except:
   print("Sorry, you entered the incorrect PIN 3 times")
+
+try:
+  withdrawal_amount = float(input("Please enter the amount you would like to withdraw: "))
+except:
+  print("Invalid entry")
 
 if isinstance(withdrawal_amount, float):
   if withdrawal_amount < 0:
