@@ -30,7 +30,7 @@ def setPinCode():
 
 pin_code = setPinCode()
 
-def withdraw_funds(account_balance):
+def withdrawFunds(account_balance):
   try:
     withdrawal_amount = float(input(f'Your balance is £{account_balance}. Please enter the amount you would like to withdraw: '))
   except:
@@ -63,7 +63,7 @@ def pinChecker():
       pin_attempts -= 1
     finally:
       if user_input == pin_code:
-        withdraw_funds(account_balance)
+        withdrawFunds(account_balance)
         break
   try:
     if user_input != pin_code:
