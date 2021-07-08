@@ -15,48 +15,59 @@
 # 7. However, when a user asks to ‘withdraw’ more money than they have on their account, then you need to
 # raise an error an exit the program.
 
-account_balance = 100
+def setAccountBalance(amount):
+  balance = amount
+  return balance
 
-pin_code = input("Please set your 4-digit PIN: ")
-while len(pin_code) < 4 or len(pin_code) > 4 or not pin_code.isnumeric():
-  print('Invalid PIN')
-  pin_code = input("Please set your 4-digit PIN: ")
+account_balance = setAccountBalance(100)
 
-attempts = 2
+def setPinCode():
+  pin = input("Please set your 4-digit PIN: ")
+  while len(pin) < 4 or len(pin) > 4 or not pin.isnumeric():
+    print('Invalid PIN')
+    pin = input("Please set your 4-digit PIN: ")
+  return pin
 
-user_input = input("Please enter your PIN: ")
-while attempts > 0:
+pin_code = setPinCode()
+
+def withdraw_funds(account_balance):
+  try:
+    withdrawal_amount = float(input(f'Your balance is £{account_balance}. Please enter the amount you would like to withdraw: '))
+  except:
+    print("Invalid entry")
+
+  if isinstance(withdrawal_amount, float):
+    if withdrawal_amount < 0:
+      raise ValueError("Sorry, no numbers  below zero")
+    try:
+      if not account_balance >= withdrawal_amount:
+        raise Exception
+      account_balance = account_balance - withdrawal_amount
+      print(f'Your remaining balance is £{account_balance :.2f}')
+    except:
+      print(f'Insufficient funds. You cannot withdraw more money than you have in your account: £{account_balance}')
+  else:
+    raise ValueError("Please enter a numerical amount")
+
+def pinChecker():
+  pin_attempts = 2
+  print("Your PIN has been set")
+  user_input = input("Please enter your PIN: ")
+  while pin_attempts > 0:
+    try:
+      if user_input != pin_code:
+        raise Exception
+    except:
+      print(f'Invalid PIN {pin_attempts} attempt(s) remaining')
+      user_input = input("Please enter your PIN: ")
+      pin_attempts -= 1
+    finally:
+      if user_input == pin_code:
+        withdraw_funds(account_balance)
+        break
   try:
     if user_input != pin_code:
       raise Exception
   except:
-    print("Invalid PIN")
-    user_input = input("Please enter your PIN: ")
-    attempts -= 1
-  finally:
-    if user_input == pin_code:
-      break
-
-try:
-  if user_input != pin_code:
-    raise Exception
-except:
-  print("Sorry, you entered the incorrect PIN 3 times")
-
-try:
-  withdrawal_amount = float(input("Please enter the amount you would like to withdraw: "))
-except:
-  print("Invalid entry")
-
-if isinstance(withdrawal_amount, float):
-  if withdrawal_amount < 0:
-    raise ValueError("Sorry, no numbers  below zero")
-  try:
-    if not account_balance >= withdrawal_amount:
-      raise Exception
-    account_balance = account_balance - withdrawal_amount
-    print(f'Your remaining balance is £{account_balance}')
-  except:
-    print(f'Insufficient funds. You cannot withdraw more money than you have in your account: £{account_balance}')
-else:
-  raise ValueError("Please enter a numerical amount")
+    print("Sorry, you entered the incorrect PIN 3 times")
+pinChecker()
