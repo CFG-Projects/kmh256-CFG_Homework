@@ -30,11 +30,16 @@ def setPinCode():
 
 pin_code = setPinCode()
 
-def withdrawFunds(account_balance):
+def withdraw_funds(account_balance):
+  withdrawal_amount = input(f'Your balance is £{account_balance}. Please enter the amount you would like to withdraw: ')
   try:
-    withdrawal_amount = float(input(f'Your balance is £{account_balance}. Please enter the amount you would like to withdraw: '))
+    float(withdrawal_amount)
   except:
-    print("Invalid entry")
+    while not withdrawal_amount.isnumeric():
+      print("Invalid entry")
+      withdrawal_amount = input(f'Your balance is £{account_balance}. Please enter the amount you would like to withdraw: ')
+  
+  withdrawal_amount = float(withdrawal_amount)
 
   if isinstance(withdrawal_amount, float):
     if withdrawal_amount < 0:
@@ -47,7 +52,7 @@ def withdrawFunds(account_balance):
     except:
       print(f'Insufficient funds. You cannot withdraw more money than you have in your account: £{account_balance}')
   else:
-    raise ValueError("Please enter a numerical amount")
+    print("Please enter a numerical amount")
 
 def pinChecker():
   pin_attempts = 2
@@ -63,7 +68,7 @@ def pinChecker():
       pin_attempts -= 1
     finally:
       if user_input == pin_code:
-        withdrawFunds(account_balance)
+        withdraw_funds(account_balance)
         break
   try:
     if user_input != pin_code:
