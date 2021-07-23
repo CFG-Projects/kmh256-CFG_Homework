@@ -118,6 +118,9 @@ then updates the final total amount. """
 """ Resets total items to an empty dictionary, total price to zero
 and discount to zero."""
 
+print('****************************************************************************')
+print()
+
 """
 
 TASK 2
@@ -131,19 +134,70 @@ a specialization, for example: Software Student and Data Science student.
 
 """
 
+class Student:
 
-# class Student:
+    def __init__(self, name, age, id):
+        self.name = name
+        self.age = age
+        self.id = id
+        self.subjects = dict()
 
-#     def __init__(self, name, age, id):
-#         self.name = name
-#         self.age = age
-#         self.id = id
-#         self.subjects = dict()
+class CFGStudent(Student):
 
+    def add_subject(self, subjects_dict):
+        print(f'You have added: ')
+        for i in subjects_dict:
+            self.subjects[i] = subjects_dict[i]
+            print(f'{i}: {subjects_dict[i]}%')
+        return self.subjects
+
+    def remove_subject(self, subject):
+        self.subjects.pop(subject)
+        return f'You have removed {subject} from your course list.'
+
+    def view_subjects(self):
+        return f'Your courses and grades are: {self.subjects}'
+
+    def get_overall_mark(self):
+        overall_marks = 0
+        for i in self.subjects.values():
+            overall_marks += i
+        return f'Overall percentage: {overall_marks / len(self.subjects)}%'
 
 # class CFGStudent(<should inherit from Student>)
-#     create new methods that manage student's subjects (add/remove new subject and its grade to the dict)
-#     create a method to view all subjects taken by a student
-#     create a method  (and a new variable) to get student's overall mark (use average)
+student1 = CFGStudent('Kara', 32, 1)
+print(f'Name: {student1.name}, Age: {student1.age}, ID: {student1.id}')
 
+# create new methods that manage student's subjects
+# add new subject and its grade to the dict
+s1_subjects_dict = {'Python': 86, 'SQL': 73, 'Software Development': 67,
+'JavaScript': 69, 'OOP': 74}
+student1.add_subject(s1_subjects_dict)
 
+# create a method to view all subjects taken by a student
+print(student1.view_subjects())
+student1.add_subject({'Project': 78})
+print(student1.view_subjects())
+
+# remove subject and its grade to the dict
+print(student1.remove_subject('JavaScript'))
+print(student1.view_subjects())
+
+# create a method (and a new variable) to get student's overall mark (use average)
+print(student1.get_overall_mark())
+
+# ADD
+""" Accepts a dictionary of subjects and grades.
+It then iterates through the dictionary and adds each item to the subjects dictionary. """
+
+# REMOVE
+""" Accepts a string item eg. 'JavaScript' from the subjects_dict.
+It then removes that key:value pair from the subjects dictionary. """
+
+# VIEW SUBJECTS
+""" Returns the subjects dictionary. """
+
+# OVERALL MARK
+""" Calculates the overall mark by iterating through the subjects dictionary values
+and storing the sum in the overall_mark variable. It then calculates the average grade
+by dividing overall_mark by the length of the values list and returns the result."""
