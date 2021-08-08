@@ -15,6 +15,9 @@
 # 7. However, when a user asks to ‘withdraw’ more money than they have on their account, then you need to
 # raise an error an exit the program.
 
+def main():
+  pass
+
 # Sets account balance
 def setAccountBalance(amount):
   balance = amount
@@ -23,14 +26,13 @@ def setAccountBalance(amount):
 account_balance = setAccountBalance(100)
 
 # Sets pin code - checks length and that PIN is numeric
-def setPinCode():
-  pin = input("Please set your 4-digit PIN: ")
+def setPinCode(pin):
   while len(pin) < 4 or len(pin) > 4 or not pin.isnumeric():
     print('Invalid PIN')
     pin = input("Please set your 4-digit PIN: ")
   return pin
 
-pin_code = setPinCode()
+pin_code = setPinCode(pin = input("Please set your 4-digit PIN: "))
 
 # Takes withdrawal amount input, checks input is numeric, casts withdrawal amount as float
 def withdrawFunds(account_balance):
@@ -59,10 +61,10 @@ def withdrawFunds(account_balance):
 
 # Checks PIN entered matches PIN set, gives 3 attempts to enter PIN correctly
 # If PIN is correct, user is prompted to input withdrawal amount
-def pinChecker():
+def pinChecker(user_input):
   pin_attempts = 2
   print("Your PIN has been set")
-  user_input = input("Please enter your PIN: ")
+  # user_input = input("Please enter your PIN: ")
   while pin_attempts > 0:
     try:
       if user_input != pin_code:
@@ -80,4 +82,8 @@ def pinChecker():
       raise Exception
   except:
     print("Sorry, you entered the incorrect PIN 3 times")
-pinChecker()
+
+pinChecker(user_input = input("Please enter your PIN: "))
+
+if __name__ == '__main__':
+	main()

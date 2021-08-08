@@ -6,40 +6,30 @@
 # Try to write at least 5 unit tests in total covering various cases.
 
 import unittest
-from homework_exception_handling import setAccountBalance, setPinCode, withdrawFunds, pinChecker
+import homework_exception_handling
 
 class TestHomeworkExceptionHandling(unittest.TestCase):
 
+    # enter 9999 when prompted to set / enter PIN
+    # enter 50 when prompted for withdrawal amount
+
     def test_setAccountBalance(self):
-        expected = 100
-        result = setAccountBalance(100)
-        self.assertEqual(expected, result)
-    
+        account_balance = homework_exception_handling.setAccountBalance(100)
+        self.assertEqual(account_balance, 100)
+
     def test_setPinCode(self):
-        expected = '9999'
-        result = setPinCode() # enter 9999 when prompted to set PIN
-        self.assertEqual(expected, result)
-    
+        pin_code = homework_exception_handling.setPinCode('9999')
+        self.assertEqual(pin_code, '9999')
+
     def test_pinChecker(self):
-        print()
-        print('Test 3')
-        expected = print("Sorry, you entered the incorrect PIN 3 times")
-        result = pinChecker() # enter 0000 3 times when prompted to enter PIN
-        self.assertEqual(expected, result)
+        expected = print('Your remaining balance is £50.00')
+        self.assertEqual(homework_exception_handling.pinChecker('9999'), expected)
 
     def test_withdrawFunds(self):
-        print()
-        print('Test 4')
-        expected = print(f'Your remaining balance is £{50.00 :.2f}')
-        result = withdrawFunds(account_balance=100) # enter PIN 9999 then 50 when prompted for amount
-        self.assertEqual(expected, result)
-    
-    # def test_withdrawFunds(self):
-    #     print()
-    #     print('Test 5')
-    #     expected = print(f'Insufficient funds. You cannot withdraw more money than you have in your account: £{100}')
-    #     result = withdrawFunds(account_balance=100) # enter PIN 9999 then 110 when prompted for amount
-    #     self.assertEqual(expected, result)
+        expected1 = print(f'Your remaining balance is £50.00')
+        expected2 = print(f'Insufficient funds. You cannot withdraw more money than you have in your account: £{100}')
+        self.assertEqual(homework_exception_handling.withdrawFunds(100), expected1)
+        self.assertEqual(homework_exception_handling.withdrawFunds(1), expected2)
 
 if __name__ == '__main__':
     unittest.main()
