@@ -49,11 +49,13 @@ ordered_phrase dict where the values do not match the ordered_characters
 dict and False is returned.
     
 """
+def main():
+    pass
 
 characters = "cbacba"
 phrase = "aabbccc"
 
-def generate_phrase2(characters, phrase):
+def generate_phrase(characters, phrase):
 
     ordered_characters = OrderedDict(sorted(Counter(characters).items(), key=lambda c: c[0]))
     ordered_phrase = OrderedDict(sorted(Counter(phrase).items(), key=lambda p: p[0]))
@@ -66,4 +68,7 @@ def generate_phrase2(characters, phrase):
     except KeyError:
         return False
     
-print(generate_phrase2(characters, phrase))
+print(generate_phrase(characters, phrase))
+
+if __name__ == '__main__':
+	main()
