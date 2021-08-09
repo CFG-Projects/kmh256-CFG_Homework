@@ -48,7 +48,7 @@ class CashRegister:
 
     def reset_register(self):
         print('The register has been cleared.')
-        self.total_items = {}
+        self.total_items.clear()
         self.total_price = 0
         self.discount = 0
 
