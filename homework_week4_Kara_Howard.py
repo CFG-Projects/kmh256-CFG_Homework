@@ -45,7 +45,6 @@ print(search_in_matrix(matrix, target))
 
 print('*******************************************************************************')
 
-from itertools import product
 
 def search_in_matrix2(matrix, target):
     matrix_length = len(matrix)
